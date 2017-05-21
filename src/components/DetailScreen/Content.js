@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Content, Item, Input } from 'native-base';
+import { connect } from 'react-redux';
+import { setCurrentText } from '../../actions/memo';
 
-export default class MyContent extends Component {
+class MyContent extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,7 +21,7 @@ export default class MyContent extends Component {
         <Item regular>
           <Input
             multiline
-            onChangeText={(text) => { console.log(text); }}
+            onChangeText={(text) => { this.props.setCurrentText(text); }}
             style={{
               backgroundColor: '#ffffff',
               height: 'auto',
@@ -31,3 +33,18 @@ export default class MyContent extends Component {
     );
   }
 }
+
+function mapStateToProps() {
+  return {};
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    setCurrentText: text => dispatch(setCurrentText(text)),
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(MyContent);

@@ -4,9 +4,9 @@ import MyHeader from './Header';
 import MyContent from './Content';
 import MyFooter from './Footer';
 
-const Detail = () => (
+const Detail = props => (
   <Container>
-    <MyHeader />
+    <MyHeader id={props.id} />
     <MyContent />
     <MyFooter />
   </Container>

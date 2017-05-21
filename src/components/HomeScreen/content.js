@@ -7,14 +7,17 @@ const datas = [
   {
     route: 'detail',
     text: 'Habu Yoshiharu',
+    id: 1,
   },
   {
     route: 'detail',
     text: 'Sato Amahiko',
+    id: 2,
   },
   {
     route: 'detail',
     text: 'Watanabe Akira',
+    id: 3,
   },
 ];
 
@@ -24,7 +27,7 @@ const MyContent = () => (
       dataArray={datas}
       renderRow={data =>
         (
-          <ListItem button onPress={() => { Actions[data.route](); }} >
+          <ListItem button onPress={() => { Actions[data.route]({ id: data.id }); }} >
             <Text>{data.text}</Text>
           </ListItem>
         )
