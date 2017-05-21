@@ -4,7 +4,7 @@ import MyHeader from './Header';
 import MyContent from './Content';
 import MyFooter from './Footer';
 
-const Home = () => (
+const Detail = () => (
   <Container>
     <MyHeader />
     <MyContent />
@@ -12,4 +12,4 @@ const Home = () => (
   </Container>
 );
 
-export default Home;
+export default Detail;
