@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Content, Item, Input } from 'native-base';
 import { connect } from 'react-redux';
 import { setCurrentText } from '../../actions/memo';
@@ -11,6 +12,10 @@ class MyContent extends Component {
     };
   }
 
+  componentDidMount() {
+    this.props.setCurrentText(this.props.text);
+  }
+
   render() {
     return (
       <Content onLayout={
@@ -21,6 +26,7 @@ class MyContent extends Component {
         <Item regular>
           <Input
             multiline
+            value={this.props.memoData.text}
             onChangeText={(text) => { this.props.setCurrentText(text); }}
             style={{
               backgroundColor: '#ffffff',
@@ -34,8 +40,22 @@ class MyContent extends Component {
   }
 }
 
-function mapStateToProps() {
-  return {};
+MyContent.defaultProps = {
+  text: '',
+};
+
+MyContent.propTypes = {
+  text: PropTypes.string,
+  setCurrentText: PropTypes.func.isRequired,
+  memoData: PropTypes.shape({
+    text: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+function mapStateToProps(state) {
+  return {
+    memoData: state.memoData,
+  };
 }
 
 function mapDispatchToProps(dispatch) {

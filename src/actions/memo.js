@@ -1,4 +1,10 @@
-import { SET_CURRENT_ID, SET_CURRENT_TEXT, UPDATE_MEMO } from '../constants/memo';
+import { INIT_MEMO_LISTS, SET_CURRENT_ID, SET_CURRENT_TEXT, UPDATE_MEMO } from '../constants/memo';
+
+export function initMemoLists() {
+  return {
+    type: INIT_MEMO_LISTS,
+  };
+}
 
 export function updateMemo() {
   return {
