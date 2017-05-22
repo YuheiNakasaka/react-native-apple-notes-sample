@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Title, Left, Right, Body, Button, Text } from 'native-base';
+import { Header, Title, Left, Right, Body } from 'native-base';
 
 const MyHeader = () => (
   <Header>
@@ -7,11 +7,7 @@ const MyHeader = () => (
     <Body>
       <Title>メモ</Title>
     </Body>
-    <Right>
-      <Button dark transparent style={{ marginBottom: 0, marginLeft: 0 }}>
-        <Text style={{ color: '#f39c12' }}>編集</Text>
-      </Button>
-    </Right>
+    <Right />
   </Header>
 );
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Actions } from 'react-native-router-flux';
+import { Keyboard } from 'react-native';
 import { Header, Left, Right, Body, Button, Icon, Text } from 'native-base';
 import { connect } from 'react-redux';
 import { setCurrentId, updateMemo } from '../../actions/memo';
@@ -39,6 +40,7 @@ class MyHeader extends Component {
             style={{ marginBottom: 0, marginLeft: 0 }}
             onPress={() => {
               this.props.updateMemo();
+              Keyboard.dismiss();
             }}
           >
             <Text style={{ color: '#f39c12' }}>完了</Text>
