@@ -30,11 +30,21 @@ class MyContent extends Component {
     return dayDiff > 0 ? date.format('YYYY/MM/DD') : date.format('HH:mm');
   }
 
+  sortedByTime(list) {
+    return list.sort((x, y) => {
+      const unicX = new Date(x.updatedAt).getTime();
+      const unicy = new Date(y.updatedAt).getTime();
+      if (unicX < unicy) return 1;
+      if (unicX > unicy) return -1;
+      return 0;
+    });
+  }
+
   render() {
     return (
       <Content>
         <List
-          dataArray={this.props.memoData.memoList.reverse()}
+          dataArray={this.sortedByTime(this.props.memoData.memoList)}
           renderRow={data =>
             (
               <Swipeout

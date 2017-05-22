@@ -25,6 +25,7 @@ class MyContent extends Component {
       >
         <Item regular>
           <Input
+            autoFocus
             multiline
             value={this.props.memoData.text}
             onChangeText={(text) => { this.props.setCurrentText(text); }}
