@@ -13,12 +13,12 @@ function _updateMemo(state) {
     data: {
       id: `${state.memoData.id}`,
       text: state.memoData.text,
+      updatedAt: new Date(),
     },
   });
 }
 
 function _deleteMemo(state) {
-  console.log(state);
   storage.remove({
     key: 'memo',
     id: `${state.memoData.id}`,

@@ -6,10 +6,6 @@ import { connect } from 'react-redux';
 import uuidV1 from 'uuid/v1';
 
 class MyFooter extends Component {
-  componentDidMount() {
-    console.log(uuidV1());
-  }
-
   render() {
     return (
       <Footer>

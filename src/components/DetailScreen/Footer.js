@@ -22,16 +22,8 @@ class MyFooter extends Component {
               <Icon active style={{ color: '#f39c12' }} name="ios-trash-outline" />
             </Button>
           </Left>
-          <Body>
-            <Button transparent full>
-              <Icon active style={{ color: '#f39c12' }} name="ios-share-outline" />
-            </Button>
-          </Body>
-          <Right>
-            <Button transparent style={{ marginBottom: 0, marginLeft: 0 }}>
-              <Icon active style={{ color: '#f39c12' }} name="ios-create-outline" />
-            </Button>
-          </Right>
+          <Body />
+          <Right />
         </FooterTab>
       </Footer>
     );
