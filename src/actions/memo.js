@@ -1,8 +1,14 @@
-import { INIT_MEMO_LISTS, SET_CURRENT_ID, SET_CURRENT_TEXT, UPDATE_MEMO, DELETE_MEMO } from '../constants/memo';
+import { INIT_MEMO_LISTS, SEARCH_MEMO_LISTS, SET_CURRENT_ID, SET_CURRENT_TEXT, SET_CURRENT_SEARCH_WORD, CLEAR_CURRENT_SEARCH_WORD, UPDATE_MEMO, DELETE_MEMO } from '../constants/memo';
 
 export function initMemoLists() {
   return {
     type: INIT_MEMO_LISTS,
+  };
+}
+
+export function searchMemoLists() {
+  return {
+    type: SEARCH_MEMO_LISTS,
   };
 }
 
@@ -23,6 +29,19 @@ export function setCurrentId(id) {
   return {
     type: SET_CURRENT_ID,
     id,
+  };
+}
+
+export function setCurrentSearchWord(searchWord) {
+  return {
+    type: SET_CURRENT_SEARCH_WORD,
+    searchWord,
+  };
+}
+
+export function clearCurrentSearchWord() {
+  return {
+    type: CLEAR_CURRENT_SEARCH_WORD,
   };
 }
 
