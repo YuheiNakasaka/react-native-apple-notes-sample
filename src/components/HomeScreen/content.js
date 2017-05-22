@@ -15,7 +15,7 @@ class MyContent extends Component {
     return (
       <Content>
         <List
-          dataArray={this.props.memoData.memoList}
+          dataArray={this.props.memoData.memoList.reverse()}
           renderRow={data =>
             (
               <ListItem

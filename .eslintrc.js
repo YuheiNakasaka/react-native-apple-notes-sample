@@ -25,6 +25,9 @@ module.exports = {
         ],
         "no-constant-condition": [
           0
+        ],
+        "no-underscore-dangle": [
+          0
         ]
     }
 };

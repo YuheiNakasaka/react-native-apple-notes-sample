@@ -10,6 +10,14 @@ class MyHeader extends Component {
     this.props.setCurrentId(this.props.id);
   }
 
+  backBtnHander() {
+    const { text } = this.props.memoData;
+    if (text.length > 0) {
+      this.props.updateMemo();
+    }
+    Actions.pop();
+  }
+
   render() {
     return (
       <Header>
@@ -18,7 +26,7 @@ class MyHeader extends Component {
             iconleft
             transparent
             style={{ marginBottom: 0, marginLeft: 0 }}
-            onPress={() => { Actions.pop(); }}
+            onPress={() => { this.backBtnHander(); }}
           >
             <Icon active style={{ color: '#f39c12' }} name="ios-arrow-back" />
             <Text style={{ color: '#f39c12', marginLeft: 10 }}>メモ</Text>
@@ -31,7 +39,6 @@ class MyHeader extends Component {
             style={{ marginBottom: 0, marginLeft: 0 }}
             onPress={() => {
               this.props.updateMemo();
-              Actions.pop();
             }}
           >
             <Text style={{ color: '#f39c12' }}>完了</Text>
@@ -46,10 +53,15 @@ MyHeader.propTypes = {
   id: PropTypes.string.isRequired,
   setCurrentId: PropTypes.func.isRequired,
   updateMemo: PropTypes.func.isRequired,
+  memoData: PropTypes.shape({
+    text: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
-function mapStateToProps() {
-  return {};
+function mapStateToProps(state) {
+  return {
+    memoData: state.memoData,
+  };
 }
 
 function mapDispatchToProps(dispatch) {

@@ -1,4 +1,4 @@
-import { INIT_MEMO_LISTS, SET_CURRENT_ID, SET_CURRENT_TEXT, UPDATE_MEMO } from '../constants/memo';
+import { INIT_MEMO_LISTS, SET_CURRENT_ID, SET_CURRENT_TEXT, UPDATE_MEMO, DELETE_MEMO } from '../constants/memo';
 
 export function initMemoLists() {
   return {
@@ -23,5 +23,11 @@ export function setCurrentId(id) {
   return {
     type: SET_CURRENT_ID,
     id,
+  };
+}
+
+export function deleteMemo() {
+  return {
+    type: DELETE_MEMO,
   };
 }

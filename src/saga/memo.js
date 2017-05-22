@@ -1,12 +1,12 @@
 import { select, take, call, put, fork } from 'redux-saga/effects';
-import { INIT_MEMO_LISTS, UPDATE_MEMO_LISTS, UPDATE_MEMO } from '../constants/memo';
+import { INIT_MEMO_LISTS, UPDATE_MEMO_LISTS, UPDATE_MEMO, DELETE_MEMO } from '../constants/memo';
 import storage from '../libs/storage';
 
 function getMemoFromStorage() {
   return storage.getAllDataForKey('memo').then(ret => ret);
 }
 
-function updateMemo(state) {
+function _updateMemo(state) {
   storage.save({
     key: 'memo',
     id: `${state.memoData.id}`,
@@ -17,13 +17,12 @@ function updateMemo(state) {
   });
 }
 
-function* handleMemo() {
-  while (yield take(UPDATE_MEMO)) {
-    const state = yield select();
-    yield updateMemo(state);
-    const memoList = yield call(getMemoFromStorage);
-    yield put({ type: UPDATE_MEMO_LISTS, memoList });
-  }
+function _deleteMemo(state) {
+  console.log(state);
+  storage.remove({
+    key: 'memo',
+    id: `${state.memoData.id}`,
+  });
 }
 
 function* initMemos() {
@@ -33,9 +32,28 @@ function* initMemos() {
   }
 }
 
+function* updateMemo() {
+  while (yield take(UPDATE_MEMO)) {
+    const state = yield select();
+    yield _updateMemo(state);
+    const memoList = yield call(getMemoFromStorage);
+    yield put({ type: UPDATE_MEMO_LISTS, memoList });
+  }
+}
+
+function* deleteMemo() {
+  while (yield take(DELETE_MEMO)) {
+    const state = yield select();
+    yield _deleteMemo(state);
+    const memoList = yield call(getMemoFromStorage);
+    yield put({ type: UPDATE_MEMO_LISTS, memoList });
+  }
+}
+
 function* dataSaga() {
   yield fork(initMemos);
-  yield fork(handleMemo);
+  yield fork(updateMemo);
+  yield fork(deleteMemo);
 }
 
 export default dataSaga;
